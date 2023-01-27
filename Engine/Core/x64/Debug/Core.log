@@ -1,0 +1,22 @@
+﻿FXC : warning X4717: Effects deprecated for D3DCompiler_47
+  
+  compilation object save succeeded; see C:\Users\parksangwo\Desktop\Github\PhysEngine\Engine\Output\default.cso
+FXC : warning X4717: Effects deprecated for D3DCompiler_47
+  
+  compilation object save succeeded; see C:\Users\parksangwo\Desktop\Github\PhysEngine\Engine\Output\params.cso
+  pch.cpp
+  ConstantBuffer.cpp
+  CorePch.cpp
+  DepthStencilBuffer.cpp
+  DescriptorTable.cpp
+  Device.cpp
+  Engine.cpp
+  FrameBuffering.cpp
+  Mesh.cpp
+  RootSignature.cpp
+  Shader.cpp
+  SwapChain.cpp
+  Texture.cpp
+  Win32Core.cpp
+  코드를 생성하고 있습니다...
+  Core.vcxproj -> C:\Users\parksangwo\Desktop\Github\PhysEngine\Engine\Output\Core.lib
