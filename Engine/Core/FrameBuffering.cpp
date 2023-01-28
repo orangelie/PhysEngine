@@ -113,6 +113,7 @@ void FrameBuffering::Init()
 	}
 
 	_depthStencilBuffer->Init(_width, _height);
+	_perlinNoiseResource->Init(_width, _height);
 }
 
 void FrameBuffering::FlushResourceCmdList()
@@ -174,14 +175,16 @@ void FrameBuffering::RenderMid()
 	_graphicsCommandList->OMSetRenderTargets(1, &rtvHandle, FALSE, &dsvHandle);
 
 	{
+		const float scaleFactor = 10.0f;
 		TransformPass pass = {};
 		pass.offset =
-			XMMatrixScaling(2.0f, 2.0f, 2.0f) * XMMatrixTranslation(0.0f, 1.0f, 1.0f) *
+			XMMatrixScaling(scaleFactor, scaleFactor, scaleFactor) * XMMatrixTranslation(0.0f, 1.0f, 1.0f) *
 			XMMatrixLookAtLH(Vector3(0.0f, 0.0f, -10.0f), Vector3(0.0f, 0.0f, 1.0f), Vector3(0.0f, 1.0f, 0.0f)) *
 			XMMatrixPerspectiveFovLH(XM_PI * 0.25f, _aspectRatio, 0.1f, 1000.0f);
 
 		_constantBuffers[_frameIndex]->PushGraphicsData(&pass, sizeof(TransformPass));
 		_descriptorTables[_frameIndex]->SetSRV(GEngine->GetTexture()->GetSrvHandle(), SRV_REGISTER::t0);
+		_descriptorTables[_frameIndex]->SetSRV(_perlinNoiseResource->SrvHandle(), SRV_REGISTER::t1);
 		_descriptorTables[_frameIndex]->CommitTable();
 	}
 

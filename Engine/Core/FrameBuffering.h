@@ -3,6 +3,7 @@
 #include "ConstantBuffer.h"
 #include "DescriptorTable.h"
 #include "DepthStencilBuffer.h"
+#include "PerlinNoiseResource.h"
 
 static const int32 FRAME_BUFFER_COUNT = 3;
 
@@ -45,6 +46,7 @@ private:
 	shared_ptr<ConstantBuffer> _constantBuffers[FRAME_BUFFER_COUNT] = {};
 	shared_ptr<DescriptorTable> _descriptorTables[FRAME_BUFFER_COUNT] = {};
 	shared_ptr<DepthStencilBuffer> _depthStencilBuffer = make_shared<DepthStencilBuffer>();
+	shared_ptr<PerlinNoiseResource> _perlinNoiseResource = make_shared<PerlinNoiseResource>();
 
 	ComPtr<ID3D12DescriptorHeap> _rtvHeap = nullptr;
 	ComPtr<ID3D12Resource> _renderTargetBuffer[FRAME_BUFFER_COUNT] = {};

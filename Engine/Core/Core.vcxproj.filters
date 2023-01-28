@@ -18,6 +18,9 @@
     <Filter Include="Graphics\Shaders">
       <UniqueIdentifier>{33743cd4-fe55-42e2-904a-6cfb68e55dcb}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Graphics\Noise">
+      <UniqueIdentifier>{1f93c186-983b-4514-8fed-9e8e2d0949c0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h">
@@ -71,6 +74,12 @@
     <ClInclude Include="DepthStencilBuffer.h">
       <Filter>Graphics</Filter>
     </ClInclude>
+    <ClInclude Include="PerlinNoiseResource.h">
+      <Filter>Graphics\Noise</Filter>
+    </ClInclude>
+    <ClInclude Include="PerlinNoise.h">
+      <Filter>Graphics\Noise</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -114,6 +123,12 @@
     </ClCompile>
     <ClCompile Include="DepthStencilBuffer.cpp">
       <Filter>Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="PerlinNoiseResource.cpp">
+      <Filter>Graphics\Noise</Filter>
+    </ClCompile>
+    <ClCompile Include="PerlinNoise.cpp">
+      <Filter>Graphics\Noise</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
