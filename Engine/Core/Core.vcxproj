@@ -172,6 +172,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="..\ThirdParty\DirectXTex\DirectXTex.h" />
+    <ClInclude Include="Camera.h" />
     <ClInclude Include="ConstantBuffer.h" />
     <ClInclude Include="CorePch.h" />
     <ClInclude Include="d3dx12.h" />
@@ -202,6 +203,7 @@
     <ClInclude Include="Win32Core.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Camera.cpp" />
     <ClCompile Include="ConstantBuffer.cpp" />
     <ClCompile Include="CorePch.cpp" />
     <ClCompile Include="DefaultCamera.cpp" />

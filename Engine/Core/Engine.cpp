@@ -26,6 +26,7 @@ void Engine::Init(HINSTANCE hInstace)
 
 	_frameBuffering->Init();
 	_texture->Init(L"../Resources/Textures/test.jpg");
+	_textureNormal->Init(L"../Resources/Textures/test_normal.png");
 
 	_initialCompleted = true;
 

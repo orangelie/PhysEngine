@@ -28,7 +28,9 @@ public:
 	shared_ptr<FrameBuffering> GetFrameBuffering() const { return _frameBuffering; }
 	shared_ptr<SwapChain> GetSwapChain() const { return _swapChain; }
 	shared_ptr<RootSignature> GetRootSignature() const { return _rootSignature; }
+	shared_ptr<GameTimer> GetGameTimer() const { return _gameTimer; }
 	shared_ptr<Texture> GetTexture() const { return _texture; }
+	shared_ptr<Texture> GetTextureNormal() const { return _textureNormal; }
 
 	ComPtr<ID3D12Device> GetDevice() const { return _device->GetDevice(); }
 	ComPtr<IDXGIFactory4> GetFactory() const { return _device->GetFactory(); }
@@ -42,7 +44,9 @@ private:
 	shared_ptr<FrameBuffering>_frameBuffering = make_shared<FrameBuffering>(GInitialScreenWidth, GInitialScreenHeight);
 	shared_ptr<SwapChain> _swapChain = make_shared<SwapChain>();
 	shared_ptr<RootSignature> _rootSignature = make_shared<RootSignature>();
+
 	shared_ptr<Texture> _texture = make_shared<Texture>();
+	shared_ptr<Texture> _textureNormal = make_shared<Texture>();
 
 };
 

@@ -50,6 +50,7 @@ void FrameBuffering::OnSizeChanged(UINT width, UINT height, bool minimized)
 
 		LoadSizeDependentResources();
 		_depthStencilBuffer->OnResize(_width, _height);
+		SceneManager::GetInstance()->GetActiveScene()->ResizeCamera(width, height);
 
 		FlushResourceCmdList();
 	}

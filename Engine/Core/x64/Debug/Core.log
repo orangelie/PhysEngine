@@ -1,2 +1,40 @@
-﻿  DefaultCamera.cpp
+﻿FXC : warning X4717: Effects deprecated for D3DCompiler_47
+C:\Users\parksangwo\Desktop\Github\PhysEngine\Engine\Resources\Shaders\default.hlsl(18,2-56): warning X3206: implicit truncation of vector type
+C:\Users\parksangwo\Desktop\Github\PhysEngine\Engine\Resources\Shaders\default.hlsl(19,2-52): warning X3206: implicit truncation of vector type
+C:\Users\parksangwo\Desktop\Github\PhysEngine\Engine\Resources\Shaders\default.hlsl(20,2-54): warning X3206: implicit truncation of vector type
+  
+  compilation object save succeeded; see C:\Users\parksangwo\Desktop\Github\PhysEngine\Engine\Output\default.cso
+FXC : warning X4717: Effects deprecated for D3DCompiler_47
+  
+  compilation object save succeeded; see C:\Users\parksangwo\Desktop\Github\PhysEngine\Engine\Output\params.cso
+  pch.cpp
+  Camera.cpp
+  ConstantBuffer.cpp
+  CorePch.cpp
+  DefaultCamera.cpp
+  DepthStencilBuffer.cpp
+  DescriptorTable.cpp
+  Device.cpp
+  Engine.cpp
+  FrameBuffering.cpp
+  GameObject.cpp
+  GameTimer.cpp
+  Material.cpp
+  Mesh.cpp
+  MeshGenerator.cpp
+  PerlinNoise.cpp
+  PerlinNoiseResource.cpp
+  RootSignature.cpp
+  Scene.cpp
+  SceneManager.cpp
+  Shader.cpp
+  코드를 생성하고 있습니다...
+  컴파일하고 있습니다...
+  StaticMaterial.cpp
+  StaticMesh.cpp
+  StaticPrefab.cpp
+  SwapChain.cpp
+  Texture.cpp
+  Win32Core.cpp
+  코드를 생성하고 있습니다...
   Core.vcxproj -> C:\Users\parksangwo\Desktop\Github\PhysEngine\Engine\Output\Core.lib

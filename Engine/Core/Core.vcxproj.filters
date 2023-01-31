@@ -122,6 +122,9 @@
     <ClInclude Include="DefaultCamera.h">
       <Filter>Tools\Camera</Filter>
     </ClInclude>
+    <ClInclude Include="Camera.h">
+      <Filter>Tools\Camera</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -200,6 +203,9 @@
       <Filter>Object\StaticObject</Filter>
     </ClCompile>
     <ClCompile Include="DefaultCamera.cpp">
+      <Filter>Tools\Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="Camera.cpp">
       <Filter>Tools\Camera</Filter>
     </ClCompile>
   </ItemGroup>

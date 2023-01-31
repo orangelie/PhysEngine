@@ -8,7 +8,7 @@ public:
 	void SetTransformPass(TransformPass pass) { _tranformPass = pass; }
 	void SetMaterial(shared_ptr<Material> material) { _material = material; }
 
-	void Update();
+	void Update(Matrix ViewProj);
 
 private:
 	shared_ptr<Material> _material = nullptr;

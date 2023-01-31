@@ -3,7 +3,8 @@
 
 cbuffer cbPerTransform : register(b0)
 {
-	row_major matrix _cb_offset;
+	row_major matrix bWorldViewProj;
+	row_major matrix bWorld;
 };
 
 cbuffer cbPerB1 : register(b1)

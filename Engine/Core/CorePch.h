@@ -78,7 +78,8 @@ struct Resolution
 
 struct TransformPass
 {
-	Matrix offset;
+	Matrix worldViewProj;
+	Matrix world;
 };
 
 struct Vertex
