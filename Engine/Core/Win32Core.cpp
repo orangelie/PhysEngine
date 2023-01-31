@@ -210,6 +210,8 @@ LRESULT CALLBACK Win32Core::WindowProc(HWND hWnd, UINT message, WPARAM wParam, L
 
             // engine->OnKeyDown(static_cast<UINT8>(wParam));
         }
+        else if (wParam == VK_ESCAPE)
+            PostQuitMessage(0);
         return 0;
 
     case WM_KEYUP:
@@ -273,11 +275,12 @@ LRESULT CALLBACK Win32Core::WindowProc(HWND hWnd, UINT message, WPARAM wParam, L
         return 0;
 
     case WM_MOUSEMOVE:
-        if (engine && static_cast<UINT8>(wParam) == MK_LBUTTON)
+        // if (engine && static_cast<UINT8>(wParam) == MK_LBUTTON)
+        if (engine)
         {
             UINT x = LOWORD(lParam);
             UINT y = HIWORD(lParam);
-            // engine->OnMouseMove(x, y);
+            engine->OnMouseMove(x, y);
         }
         return 0;
 

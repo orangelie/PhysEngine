@@ -1,18 +1,19 @@
 #include "pch.h"
 #include "Scene.h"
 #include "Engine.h"
+#include "Input.h"
 
 void Scene::Update()
 {
 	const float scale = 5.0f * GEngine->GetGameTimer()->DeltaTime();
-	if (GetAsyncKeyState('W'))
-		_camera->MoveForward(scale);
-	else if (GetAsyncKeyState('S'))
-		_camera->MoveForward(-scale);
-	if (GetAsyncKeyState('D'))
-		_camera->MoveRight(scale);
-	else if (GetAsyncKeyState('A'))
-		_camera->MoveRight(-scale);
+	if (Input::GetInstance()->GetKeyState(DIK_W))
+		_camera->Walk(scale);
+	else if (Input::GetInstance()->GetKeyState(DIK_S))
+		_camera->Walk(-scale);
+	if (Input::GetInstance()->GetKeyState(DIK_D))
+		_camera->Strafe(scale);
+	else if (Input::GetInstance()->GetKeyState(DIK_A))
+		_camera->Strafe(-scale);
 
 	_camera->Update();
 

@@ -1,6 +1,7 @@
 # Issue Check #
 FramBuffering.cpp 79: rscCommandList Close 텍스쳐때문에 막아버림
 FramBuffering.cpp 100: descriptor_count는 현재 레벨에서 오브젝트의 최대 스폰수에 영향을 받을 가능성이 높음.
+Engine.cpp 24: SetCapture
 # end Issue Check #
 
 
@@ -8,12 +9,11 @@ FramBuffering.cpp 100: descriptor_count는 현재 레벨에서 오브젝트의 최대 스폰수에
 PerlinNoiseResource: Format을 외부로 송출하도록 바꾸라
 
 /* 추가 사항 */
-1. 카메라 좀더 손보기(회전 SetCapture WM_MOUSEMOVE)
-2. 텍스쳐-마테리얼 쪽 좀더 손보기
-3. 빛연산 추가 (PBR 넣어보자 !!)
-4. 노말매핑
-5. 전용 레벨에디터 만들기
-6. UI
+1. 텍스쳐-마테리얼 쪽 좀더 손보기
+2. 빛연산 추가 (PBR 넣어보자 !!)
+3. 노말매핑
+5. UI
+6. 전용 레벨에디터 만들기
 7. 물리엔진 적용해보기
 
 

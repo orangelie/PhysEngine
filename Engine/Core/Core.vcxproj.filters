@@ -125,6 +125,9 @@
     <ClInclude Include="Camera.h">
       <Filter>Tools\Camera</Filter>
     </ClInclude>
+    <ClInclude Include="Input.h">
+      <Filter>Tools</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -207,6 +210,9 @@
     </ClCompile>
     <ClCompile Include="Camera.cpp">
       <Filter>Tools\Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="Input.cpp">
+      <Filter>Tools</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

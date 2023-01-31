@@ -14,9 +14,12 @@ static UINT32 GInitialScreenHeight = 920;
 class Engine
 {
 public:
-	Engine() {}
-	virtual ~Engine() {}
+	Engine() { }
+	virtual ~Engine() { ReleaseCapture(); }
 	bool InitialCompleted() const { return _initialCompleted; }
+
+	void OnMouseMove(UINT x, UINT y);
+	POINT GetMousePoint() const { return _mousePoint; }
 
 	void Init(HINSTANCE hInstace);
 	void Render();
@@ -36,6 +39,7 @@ public:
 	ComPtr<IDXGIFactory4> GetFactory() const { return _device->GetFactory(); }
 
 private:
+	POINT _mousePoint = {};
 	bool _initialCompleted = false;
 
 	shared_ptr<GameTimer> _gameTimer = make_shared<GameTimer>();

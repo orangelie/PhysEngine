@@ -1,5 +1,6 @@
 #pragma once
 
+#pragma comment(lib, "dinput8")
 #pragma comment(lib, "d3d12")
 #pragma comment(lib, "dxgi")
 #pragma comment(lib, "dxguid")
@@ -13,6 +14,8 @@
 #include <Windows.h>
 #include <windowsx.h>
 #include <wrl.h>
+#include <Xinput.h>
+#include <dinput.h>
 
 #include <d3d12.h>
 #include <dxgi1_6.h>
