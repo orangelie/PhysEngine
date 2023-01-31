@@ -12,6 +12,8 @@
 *.ipch
 *.opendb
 *.db
+*.pdb
+*.idb
 
 # Fortran module files
 *.mod

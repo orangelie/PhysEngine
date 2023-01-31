@@ -5,7 +5,15 @@
 #include "DepthStencilBuffer.h"
 #include "PerlinNoiseResource.h"
 
-static const int32 FRAME_BUFFER_COUNT = 3;
+static const int32 FRAME_BUFFER_COUNT = 4;
+
+enum class CONSTANT_BUFFER_INDEX
+{
+	Transform,
+	Test,
+
+	COUNT,
+};
 
 class FrameBuffering
 {
@@ -18,15 +26,19 @@ public:
 	void Init();
 	void FlushResourceCmdList();
 
-	void Render();
+	void Render(float dt);
 	void RenderBegin();
-	void RenderMid();
+	void RenderMid(float dt);
 	void RenderEnd();
+
+	uint32 GetClientWidth() const { return _width; }
+	uint32 GetClientHeight() const { return _height; }
 
 	ComPtr<ID3D12CommandQueue> GetCmdQueue() const { return _commandQueue; }
 	ComPtr<ID3D12GraphicsCommandList> GetCurrentCmdList() const { return _graphicsCommandList; }
 	ComPtr<ID3D12GraphicsCommandList> GetResourceCmdList() const { return _rscCommandList; }
 
+	vector<shared_ptr<ConstantBuffer>> GetCurrentCbvBuffer() const { return _constantBuffers[_frameIndex]; }
 	shared_ptr<DescriptorTable> GetCurrentGraphicsDescTable() const { return _descriptorTables[_frameIndex]; }
 
 private:
@@ -43,7 +55,7 @@ private:
 	D3D12_VIEWPORT _viewport = {};
 	D3D12_RECT _scissorRect = {};
 
-	shared_ptr<ConstantBuffer> _constantBuffers[FRAME_BUFFER_COUNT] = {};
+	vector<shared_ptr<ConstantBuffer>> _constantBuffers[FRAME_BUFFER_COUNT] = {};
 	shared_ptr<DescriptorTable> _descriptorTables[FRAME_BUFFER_COUNT] = {};
 	shared_ptr<DepthStencilBuffer> _depthStencilBuffer = make_shared<DepthStencilBuffer>();
 	shared_ptr<PerlinNoiseResource> _perlinNoiseResource = make_shared<PerlinNoiseResource>();

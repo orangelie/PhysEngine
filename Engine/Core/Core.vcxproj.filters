@@ -21,6 +21,18 @@
     <Filter Include="Graphics\Noise">
       <UniqueIdentifier>{1f93c186-983b-4514-8fed-9e8e2d0949c0}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Tools">
+      <UniqueIdentifier>{8a8c3d8e-1eb2-412e-b187-bdbc5eda8d90}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Object">
+      <UniqueIdentifier>{d2451298-c780-4091-8a4a-557978757402}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Object\StaticObject">
+      <UniqueIdentifier>{86df1a06-2a9c-4174-ba34-a908f06a3197}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Tools\Camera">
+      <UniqueIdentifier>{aad6679f-837c-4aeb-875d-68ef8d5a2fae}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h">
@@ -80,6 +92,36 @@
     <ClInclude Include="PerlinNoise.h">
       <Filter>Graphics\Noise</Filter>
     </ClInclude>
+    <ClInclude Include="GameTimer.h">
+      <Filter>Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="MeshGenerator.h">
+      <Filter>Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="GameObject.h">
+      <Filter>Object</Filter>
+    </ClInclude>
+    <ClInclude Include="Material.h">
+      <Filter>Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene.h">
+      <Filter>Object</Filter>
+    </ClInclude>
+    <ClInclude Include="StaticMaterial.h">
+      <Filter>Object\StaticObject</Filter>
+    </ClInclude>
+    <ClInclude Include="StaticMesh.h">
+      <Filter>Object\StaticObject</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneManager.h">
+      <Filter>Object</Filter>
+    </ClInclude>
+    <ClInclude Include="StaticPrefab.h">
+      <Filter>Object\StaticObject</Filter>
+    </ClInclude>
+    <ClInclude Include="DefaultCamera.h">
+      <Filter>Tools\Camera</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -129,6 +171,36 @@
     </ClCompile>
     <ClCompile Include="PerlinNoise.cpp">
       <Filter>Graphics\Noise</Filter>
+    </ClCompile>
+    <ClCompile Include="GameTimer.cpp">
+      <Filter>Tools</Filter>
+    </ClCompile>
+    <ClCompile Include="MeshGenerator.cpp">
+      <Filter>Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="GameObject.cpp">
+      <Filter>Object</Filter>
+    </ClCompile>
+    <ClCompile Include="Material.cpp">
+      <Filter>Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene.cpp">
+      <Filter>Object</Filter>
+    </ClCompile>
+    <ClCompile Include="StaticMaterial.cpp">
+      <Filter>Object\StaticObject</Filter>
+    </ClCompile>
+    <ClCompile Include="StaticMesh.cpp">
+      <Filter>Object\StaticObject</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneManager.cpp">
+      <Filter>Object</Filter>
+    </ClCompile>
+    <ClCompile Include="StaticPrefab.cpp">
+      <Filter>Object\StaticObject</Filter>
+    </ClCompile>
+    <ClCompile Include="DefaultCamera.cpp">
+      <Filter>Tools\Camera</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

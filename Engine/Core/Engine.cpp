@@ -20,8 +20,6 @@ void Engine::Init(HINSTANCE hInstace)
 	_swapChain->Init(GInitialScreenWidth, GInitialScreenHeight);
 
 	_rootSignature->Init();
-	_shader->Init();
-	_mesh->Init();
 	/*
 	* ¸Þ½Ã
 	*/
@@ -30,11 +28,15 @@ void Engine::Init(HINSTANCE hInstace)
 	_texture->Init(L"../Resources/Textures/test.jpg");
 
 	_initialCompleted = true;
+
+	_gameTimer->Reset();
 }
 
 void Engine::Render()
 {
-	_frameBuffering->Render();
+	const float dt = _gameTimer->DeltaTime();
+
+	_frameBuffering->Render(dt);
 }
 
 void Engine::RenderBegin()
@@ -49,5 +51,5 @@ void Engine::RenderEnd()
 
 void Engine::Update()
 {
-
+	_gameTimer->Tick();
 }

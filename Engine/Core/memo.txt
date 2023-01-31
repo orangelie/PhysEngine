@@ -1,15 +1,16 @@
-# Warning #
+# Issue Check #
 FramBuffering.cpp 79: rscCommandList Close 텍스쳐때문에 막아버림
-# end Warning #
+FramBuffering.cpp 100: descriptor_count는 현재 레벨에서 오브젝트의 최대 스폰수에 영향을 받을 가능성이 높음.
+# end Issue Check #
 
 
 /* 수정사항 */
 PerlinNoiseResource: Format을 외부로 송출하도록 바꾸라
 
 /* 추가 사항 */
+0. 상수버퍼 관리자 만들기
 1. 카메라
 2. 메쉬및 리소스 최적화
-3. 게임타이머
 4. UI
 5. 컴포넌트화
 6. 노말매핑

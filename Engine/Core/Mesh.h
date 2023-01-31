@@ -1,12 +1,14 @@
 #pragma once
 
+#include "StaticMesh.h"
+
 class Mesh
 {
 public:
 	Mesh() {}
 	virtual ~Mesh() {}
 
-	void Init();
+	void Init(StaticMesh* staticMesh);
 	void Render();
 
 private:

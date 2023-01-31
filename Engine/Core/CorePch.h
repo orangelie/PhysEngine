@@ -40,6 +40,7 @@
 #include <cassert>
 #include <filesystem>
 #include <fstream>
+#include <algorithm>
 
 using namespace std;
 using namespace DirectX;
@@ -82,9 +83,30 @@ struct TransformPass
 
 struct Vertex
 {
-	Vector3 position;
-	Vector4 color;
-	Vector2 uv;
+	Vertex() {}
+	Vertex(
+		const DirectX::XMFLOAT3& p,
+		const DirectX::XMFLOAT3& n,
+		const DirectX::XMFLOAT3& t,
+		const DirectX::XMFLOAT2& uv) :
+		Position(p),
+		Normal(n),
+		TangentU(t),
+		TexC(uv) {}
+	Vertex(
+		float px, float py, float pz,
+		float nx, float ny, float nz,
+		float tx, float ty, float tz,
+		float u, float v) :
+		Position(px, py, pz),
+		Normal(nx, ny, nz),
+		TangentU(tx, ty, tz),
+		TexC(u, v) {}
+
+	Vector3 Position;
+	Vector3 Normal;
+	Vector3 TangentU;
+	Vector2 TexC;
 };
 
 enum class CBV_REGISTER : uint8

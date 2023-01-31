@@ -7,8 +7,7 @@ public:
 	virtual ~Shader() {}
 
 	void Init();
-
-	ComPtr<ID3D12PipelineState> GetPipelineState() const { return _piplineState; }
+	void Update();
 
 private:
 	void CreateVertexShader(wstring path, string func, string target);

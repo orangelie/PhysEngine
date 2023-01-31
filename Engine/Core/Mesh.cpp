@@ -1,22 +1,12 @@
 #include "pch.h"
 #include "Mesh.h"
 #include "Engine.h"
+#include "MeshGenerator.h"
 
-void Mesh::Init()
+void Mesh::Init(StaticMesh* staticMesh)
 {
-	vector<Vertex> vtxBuffer = {
-		{ { 0.5f, 0.5f, 0.0f },		{ 1.0f, 0.0f, 0.0f, 1.0f }, { 1.0f, 0.0f } },
-		{ { 0.5f, -0.5f, 0.0f },	{ 0.0f, 1.0f, 0.0f, 1.0f }, { 1.0f, 1.0f } },
-		{ { -0.5f, -0.5f, 0.0f },	{ 0.0f, 0.0f, 1.0f, 1.0f }, { 0.0f, 1.0f } },
-		{ { -0.5f, 0.5f, 0.0f },	{ 1.0f, 0.0f, 1.0f, 1.0f }, { 0.0f, 0.0f } },
-	};
-	vector<uint32> idxBuffer = {
-		0, 1, 2,
-		2, 3, 0
-	};
-
-	CreateVertexBuffer(vtxBuffer);
-	CreateIndexBuffer(idxBuffer);
+	CreateVertexBuffer(staticMesh->Vertices());
+	CreateIndexBuffer(staticMesh->Indices());
 }
 
 void Mesh::Render()

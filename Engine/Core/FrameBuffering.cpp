@@ -6,6 +6,7 @@
 #include "Mesh.h"
 #include "RootSignature.h"
 #include "Win32Core.h"
+#include "SceneManager.h"
 
 const Resolution FrameBuffering::_resolutionOptions[] =
 {
@@ -97,12 +98,14 @@ void FrameBuffering::Init()
 	rtvHeapDesc.Flags = D3D12_DESCRIPTOR_HEAP_FLAG_NONE;
 	HR(DEVICE->CreateDescriptorHeap(&rtvHeapDesc, IID_PPV_ARGS(&_rtvHeap)));
 
-	const uint32 descriptor_count = 32;
+	static const uint32 descriptor_count = 32;
 	CD3DX12_CPU_DESCRIPTOR_HANDLE cpuHandle(_rtvHeap->GetCPUDescriptorHandleForHeapStart());
 	for (uint32 i = 0; i < FRAME_BUFFER_COUNT; ++i)
 	{
-		_constantBuffers[i] = make_shared<ConstantBuffer>();
-		_constantBuffers[i]->Init(CBV_REGISTER::b0, sizeof(TransformPass), descriptor_count);
+		for (uint32 k = 0; k < (uint32)CONSTANT_BUFFER_INDEX::COUNT; ++k)
+			_constantBuffers[i].push_back(make_shared<ConstantBuffer>());
+		_constantBuffers[i][(uint32)CONSTANT_BUFFER_INDEX::Transform]->Init(CBV_REGISTER::b0, sizeof(TransformPass), descriptor_count);
+		_constantBuffers[i][(uint32)CONSTANT_BUFFER_INDEX::Test]->Init(CBV_REGISTER::b1, sizeof(float) * 4, descriptor_count);
 
 		_descriptorTables[i] = make_shared<DescriptorTable>();
 		_descriptorTables[i]->Init(descriptor_count);
@@ -114,6 +117,8 @@ void FrameBuffering::Init()
 
 	_depthStencilBuffer->Init(_width, _height);
 	_perlinNoiseResource->Init(_width, _height);
+
+	SceneManager::GetInstance()->Init();
 }
 
 void FrameBuffering::FlushResourceCmdList()
@@ -128,11 +133,11 @@ void FrameBuffering::FlushResourceCmdList()
 	_rscCommandList->Reset(_rscCommandAllocator.Get(), nullptr);
 }
 
-void FrameBuffering::Render()
+void FrameBuffering::Render(float dt)
 {
 	RenderBegin();
 
-	RenderMid();
+	RenderMid(dt);
 
 	RenderEnd();
 }
@@ -145,19 +150,16 @@ void FrameBuffering::RenderBegin()
 	_graphicsCommandList->RSSetScissorRects(1, &_scissorRect);
 	_graphicsCommandList->RSSetViewports(1, &_viewport);
 
-	_constantBuffers[_frameIndex]->Clear();
+	_constantBuffers[_frameIndex][(uint32)CONSTANT_BUFFER_INDEX::Transform]->Clear();
+	_constantBuffers[_frameIndex][(uint32)CONSTANT_BUFFER_INDEX::Test]->Clear();
 	_descriptorTables[_frameIndex]->Clear();
-
-	_graphicsCommandList->SetPipelineState(GEngine->GetShader()->GetPipelineState().Get());
 }
 
-void FrameBuffering::RenderMid()
+void FrameBuffering::RenderMid(float dt)
 {
 	auto signature = GEngine->GetRootSignature()->GetRootSignature().Get();
 	auto transition_before = CD3DX12_RESOURCE_BARRIER::Transition(_renderTargetBuffer[_frameIndex].Get(),
 		D3D12_RESOURCE_STATE_PRESENT, D3D12_RESOURCE_STATE_RENDER_TARGET);
-	auto transition_after = CD3DX12_RESOURCE_BARRIER::Transition(_renderTargetBuffer[_frameIndex].Get(),
-		D3D12_RESOURCE_STATE_RENDER_TARGET, D3D12_RESOURCE_STATE_PRESENT);
 	FLOAT colors[4] = { 1.0f, 1.0f, 1.0f, 1.0f };
 	auto dsvHandle = _depthStencilBuffer->CpuHandle();
 
@@ -174,27 +176,15 @@ void FrameBuffering::RenderMid()
 	_graphicsCommandList->ClearDepthStencilView(dsvHandle, D3D12_CLEAR_FLAG_DEPTH | D3D12_CLEAR_FLAG_STENCIL, 1.0f, 0, 0, nullptr);
 	_graphicsCommandList->OMSetRenderTargets(1, &rtvHandle, FALSE, &dsvHandle);
 
-	{
-		const float scaleFactor = 10.0f;
-		TransformPass pass = {};
-		pass.offset =
-			XMMatrixScaling(scaleFactor, scaleFactor, scaleFactor) * XMMatrixTranslation(0.0f, 1.0f, 1.0f) *
-			XMMatrixLookAtLH(Vector3(0.0f, 0.0f, -10.0f), Vector3(0.0f, 0.0f, 1.0f), Vector3(0.0f, 1.0f, 0.0f)) *
-			XMMatrixPerspectiveFovLH(XM_PI * 0.25f, _aspectRatio, 0.1f, 1000.0f);
-
-		_constantBuffers[_frameIndex]->PushGraphicsData(&pass, sizeof(TransformPass));
-		_descriptorTables[_frameIndex]->SetSRV(GEngine->GetTexture()->GetSrvHandle(), SRV_REGISTER::t0);
-		_descriptorTables[_frameIndex]->SetSRV(_perlinNoiseResource->SrvHandle(), SRV_REGISTER::t1);
-		_descriptorTables[_frameIndex]->CommitTable();
-	}
-
-	GEngine->GetMesh()->Render();
-
-	_graphicsCommandList->ResourceBarrier(1, &transition_after);
+	SceneManager::GetInstance()->Update("TestScene");
 }
 
 void FrameBuffering::RenderEnd()
 {
+	auto transition_after = CD3DX12_RESOURCE_BARRIER::Transition(_renderTargetBuffer[_frameIndex].Get(),
+		D3D12_RESOURCE_STATE_RENDER_TARGET, D3D12_RESOURCE_STATE_PRESENT);
+	_graphicsCommandList->ResourceBarrier(1, &transition_after);
+
 	_graphicsCommandList->Close();
 	ID3D12CommandList* cmdLists[] = { _graphicsCommandList.Get() };
 	_commandQueue->ExecuteCommandLists(_countof(cmdLists), cmdLists);

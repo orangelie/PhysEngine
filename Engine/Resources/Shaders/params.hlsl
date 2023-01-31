@@ -6,10 +6,19 @@ cbuffer cbPerTransform : register(b0)
 	row_major matrix _cb_offset;
 };
 
+cbuffer cbPerB1 : register(b1)
+{
+	float a;
+	float b;
+	float c;
+	float d;
+};
+
 struct VERTEX_IN
 {
 	float3 position : POSITION;
-	float4 color : COLOR;
+	float3 normal : NORMAL;
+	float3 tangent : TANGENT;
 	float2 uv : TEXCOORD;
 };
 
@@ -17,7 +26,8 @@ struct VERTEX_OUT
 {
 	float4 position_ndc : SV_POSITION;
 	float3 position : POSITION;
-	float4 color : COLOR;
+	float3 normal : NORMAL;
+	float3 tangent : TANGENT;
 	float2 uv : TEXCOORD;
 };
 
