@@ -18,5 +18,8 @@ void Scene::Update()
 	_camera->Update();
 
 	for (uint32 i = 0; i < _gameObjects.size(); ++i)
-		_gameObjects[i].second->Update(_camera->ViewProj());
+	{
+		_light->Update();
+		_gameObjects[i].second->Update(_camera->View(), _camera->Proj(), _camera->GetEyePos());
+	}
 }

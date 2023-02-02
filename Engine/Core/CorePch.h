@@ -81,8 +81,11 @@ struct Resolution
 
 struct TransformPass
 {
-	Matrix worldViewProj;
-	Matrix world;
+	Matrix View;
+	Matrix Proj;
+	Matrix World;
+	Vector3 EyePos;
+	float pad;
 };
 
 struct Vertex
@@ -131,6 +134,7 @@ enum class SRV_REGISTER : uint8
 	t2,
 	t3,
 	t4,
+	t5,
 
 	END
 };

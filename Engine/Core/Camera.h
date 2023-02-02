@@ -6,7 +6,10 @@ public:
 	Camera() {}
 	virtual ~Camera() {}
 
+	virtual Matrix View() = 0;
+	virtual Matrix Proj() = 0;
 	virtual Matrix ViewProj() = 0;
+	virtual Vector3& GetEyePos() = 0;
 
 	virtual void Init(uint32 width, uint32 height) = 0;
 	virtual void Resize(uint32 width, uint32 height) = 0;
@@ -14,6 +17,8 @@ public:
 
 	virtual void Strafe(float d) = 0;
 	virtual void Walk(float d) = 0;
+
+	
 
 protected:
 	Vector3 Position = { 0.0f, 0.0f, -10.0f };

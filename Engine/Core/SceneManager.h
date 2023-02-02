@@ -14,7 +14,7 @@ public:
 
 public:
 	void Init();
-	void Update(string name);
+	void Update();
 
 private:
 	void CreateTestScene();

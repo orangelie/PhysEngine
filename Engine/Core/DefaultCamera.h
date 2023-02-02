@@ -9,7 +9,10 @@ public:
 	DefaultCamera() {}
 	virtual ~DefaultCamera() {}
 
+	virtual Matrix View() override { return _view; }
+	virtual Matrix Proj() override { return _proj; }
 	virtual Matrix ViewProj() override { return _viewProj; }
+	virtual Vector3& GetEyePos() override { return Position; }
 
 	virtual void Init(uint32 width, uint32 height) override;
 	virtual void Resize(uint32 width, uint32 height) override;

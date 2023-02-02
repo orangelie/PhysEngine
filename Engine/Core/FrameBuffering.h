@@ -10,7 +10,7 @@ static const int32 FRAME_BUFFER_COUNT = 4;
 enum class CONSTANT_BUFFER_INDEX
 {
 	Transform,
-	Test,
+	Light,
 
 	COUNT,
 };
@@ -19,7 +19,12 @@ class FrameBuffering
 {
 public:
 	FrameBuffering(uint32 width, uint32 height) : _width(width), _height(height) {}
-	virtual ~FrameBuffering() {}
+	virtual ~FrameBuffering()
+	{
+		_rscCommandList->Close();
+		WaitForGpu();
+		CloseHandle(_fenceEvent);
+	}
 	void OnSizeChanged(UINT width, UINT height, bool minimized);
 
 	void StartCmdQueue();
@@ -41,9 +46,10 @@ public:
 	vector<shared_ptr<ConstantBuffer>> GetCurrentCbvBuffer() const { return _constantBuffers[_frameIndex]; }
 	shared_ptr<DescriptorTable> GetCurrentGraphicsDescTable() const { return _descriptorTables[_frameIndex]; }
 
-private:
 	void WaitForGpu();
 	void MoveToNextFrame();
+
+private:
 	void UpdateRectAndScissor();
 	void LoadSizeDependentResources();
 

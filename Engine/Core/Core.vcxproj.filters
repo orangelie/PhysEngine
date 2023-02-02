@@ -128,6 +128,9 @@
     <ClInclude Include="Input.h">
       <Filter>Tools</Filter>
     </ClInclude>
+    <ClInclude Include="Lighting.h">
+      <Filter>Graphics</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -214,6 +217,9 @@
     <ClCompile Include="Input.cpp">
       <Filter>Tools</Filter>
     </ClCompile>
+    <ClCompile Include="Lighting.cpp">
+      <Filter>Graphics</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\ThirdParty\DirectXTex\DirectXTex.inl">
@@ -233,6 +239,9 @@
       <Filter>Graphics\Shaders</Filter>
     </FxCompile>
     <FxCompile Include="..\Resources\Shaders\params.hlsl">
+      <Filter>Graphics\Shaders</Filter>
+    </FxCompile>
+    <FxCompile Include="..\Resources\Shaders\lighting.hlsl">
       <Filter>Graphics\Shaders</Filter>
     </FxCompile>
   </ItemGroup>

@@ -16,9 +16,10 @@ PerlinNoiseResource: Format을 외부로 송출하도록 바꾸라
 6. 전용 레벨에디터 만들기
 7. 물리엔진 적용해보기
 
-
-
-
+# Emergency Implementation List #
+1. lighting.hlsl 빛연산추가
+2. (world좌표계기기준) gEyePos 상수버퍼b0으로 넘겨주기
+# end Emergency Implementation List #
 
 
 

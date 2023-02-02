@@ -7,6 +7,7 @@
 #include "RootSignature.h"
 #include "Win32Core.h"
 #include "SceneManager.h"
+#include "Lighting.h"
 
 const Resolution FrameBuffering::_resolutionOptions[] =
 {
@@ -99,14 +100,14 @@ void FrameBuffering::Init()
 	rtvHeapDesc.Flags = D3D12_DESCRIPTOR_HEAP_FLAG_NONE;
 	HR(DEVICE->CreateDescriptorHeap(&rtvHeapDesc, IID_PPV_ARGS(&_rtvHeap)));
 
-	static const uint32 descriptor_count = 32;
+	static const uint32 descriptor_count = 256;
 	CD3DX12_CPU_DESCRIPTOR_HANDLE cpuHandle(_rtvHeap->GetCPUDescriptorHandleForHeapStart());
 	for (uint32 i = 0; i < FRAME_BUFFER_COUNT; ++i)
 	{
 		for (uint32 k = 0; k < (uint32)CONSTANT_BUFFER_INDEX::COUNT; ++k)
 			_constantBuffers[i].push_back(make_shared<ConstantBuffer>());
 		_constantBuffers[i][(uint32)CONSTANT_BUFFER_INDEX::Transform]->Init(CBV_REGISTER::b0, sizeof(TransformPass), descriptor_count);
-		_constantBuffers[i][(uint32)CONSTANT_BUFFER_INDEX::Test]->Init(CBV_REGISTER::b1, sizeof(float) * 4, descriptor_count);
+		_constantBuffers[i][(uint32)CONSTANT_BUFFER_INDEX::Light]->Init(CBV_REGISTER::b1, sizeof(LightPass), descriptor_count);
 
 		_descriptorTables[i] = make_shared<DescriptorTable>();
 		_descriptorTables[i]->Init(descriptor_count);
@@ -152,7 +153,7 @@ void FrameBuffering::RenderBegin()
 	_graphicsCommandList->RSSetViewports(1, &_viewport);
 
 	_constantBuffers[_frameIndex][(uint32)CONSTANT_BUFFER_INDEX::Transform]->Clear();
-	_constantBuffers[_frameIndex][(uint32)CONSTANT_BUFFER_INDEX::Test]->Clear();
+	_constantBuffers[_frameIndex][(uint32)CONSTANT_BUFFER_INDEX::Light]->Clear();
 	_descriptorTables[_frameIndex]->Clear();
 }
 
@@ -161,7 +162,7 @@ void FrameBuffering::RenderMid(float dt)
 	auto signature = GEngine->GetRootSignature()->GetRootSignature().Get();
 	auto transition_before = CD3DX12_RESOURCE_BARRIER::Transition(_renderTargetBuffer[_frameIndex].Get(),
 		D3D12_RESOURCE_STATE_PRESENT, D3D12_RESOURCE_STATE_RENDER_TARGET);
-	FLOAT colors[4] = { 1.0f, 1.0f, 1.0f, 1.0f };
+	FLOAT colors[4] = { 0.5f, 0.5f, 0.5f, 1.0f };
 	auto dsvHandle = _depthStencilBuffer->CpuHandle();
 
 
@@ -177,7 +178,7 @@ void FrameBuffering::RenderMid(float dt)
 	_graphicsCommandList->ClearDepthStencilView(dsvHandle, D3D12_CLEAR_FLAG_DEPTH | D3D12_CLEAR_FLAG_STENCIL, 1.0f, 0, 0, nullptr);
 	_graphicsCommandList->OMSetRenderTargets(1, &rtvHandle, FALSE, &dsvHandle);
 
-	SceneManager::GetInstance()->Update("TestScene");
+	SceneManager::GetInstance()->Update();
 }
 
 void FrameBuffering::RenderEnd()

@@ -15,6 +15,8 @@ void Mesh::Render()
 	GRAPHICS_CMDLIST->IASetVertexBuffers(0, 1, &_vertexBufferView);
 	GRAPHICS_CMDLIST->IASetIndexBuffer(&_indexBufferView);
 
+	GEngine->GetFrameBuffering()->GetCurrentGraphicsDescTable()->CommitTable();
+
 	GRAPHICS_CMDLIST->DrawIndexedInstanced(_indexCount, 1, 0, 0, 0);
 }
 

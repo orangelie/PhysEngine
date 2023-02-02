@@ -23,4 +23,6 @@ void Client::Update()
 		if (msg.message == WM_QUIT)
 			break;
 	}
+
+	GEngine.release();
 }

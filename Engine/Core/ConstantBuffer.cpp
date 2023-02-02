@@ -61,7 +61,7 @@ void ConstantBuffer::CreateView()
 
 		D3D12_CONSTANT_BUFFER_VIEW_DESC cbvDesc = {};
 		cbvDesc.SizeInBytes = _elementSize;
-		cbvDesc.BufferLocation = _cbvBuffer->GetGPUVirtualAddress();
+		cbvDesc.BufferLocation = _cbvBuffer->GetGPUVirtualAddress() + static_cast<uint64>(_elementSize) * i;
 
 		DEVICE->CreateConstantBufferView(&cbvDesc, handle);
 	}

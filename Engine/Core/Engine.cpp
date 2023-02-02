@@ -29,8 +29,9 @@ void Engine::Init(HINSTANCE hInstace)
 
 	_rootSignature->Init();
 	_frameBuffering->Init();
-	_texture->Init(L"../Resources/Textures/test.jpg");
-	_textureNormal->Init(L"../Resources/Textures/test_normal.png");
+	_texture->Init(L"../Resources/Textures/rock_diffuse.png");
+	_textureNormal->Init(L"../Resources/Textures/rock_normal.png");
+	_textureRough->Init(L"../Resources/Textures/rock_rough.png");
 
 	_initialCompleted = true;
 
