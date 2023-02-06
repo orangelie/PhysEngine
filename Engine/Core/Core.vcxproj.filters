@@ -33,6 +33,9 @@
     <Filter Include="Tools\Camera">
       <UniqueIdentifier>{aad6679f-837c-4aeb-875d-68ef8d5a2fae}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Graphics\Font">
+      <UniqueIdentifier>{0ec2c58e-5eca-44ba-976a-2b95b675750d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h">
@@ -131,6 +134,9 @@
     <ClInclude Include="Lighting.h">
       <Filter>Graphics</Filter>
     </ClInclude>
+    <ClInclude Include="FontResource.h">
+      <Filter>Graphics\Font</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -219,6 +225,9 @@
     </ClCompile>
     <ClCompile Include="Lighting.cpp">
       <Filter>Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="FontResource.cpp">
+      <Filter>Graphics\Font</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
