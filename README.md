@@ -12,4 +12,9 @@ It is designed to be relatively easy to customize for each object.
   
 ## Control  
 [ Alt + Enter ]> Convert To Fullscreen  
+[ SpaceBar ]> Convert To Fullscreen  
+[ MouseMove ]> Camera Rotation  
+[ WASD ]> Camera Translation  
+[ Esc ]> Quit Program  
+[ 1, 2 ]> Toggle Mouse Lock/Unlock  
   
