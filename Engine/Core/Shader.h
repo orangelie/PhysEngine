@@ -1,12 +1,17 @@
 #pragma once
 
+struct ISHADER_STRUCT
+{
+
+};
+
 class Shader
 {
 public:
 	Shader() {}
 	virtual ~Shader() {}
 
-	void Init();
+	void Init(const wstring& vs, const wstring& ps);
 	void Update();
 
 private:

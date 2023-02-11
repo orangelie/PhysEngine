@@ -3,12 +3,12 @@
 #include "Engine.h"
 #include "RootSignature.h"
 
-void Shader::Init()
+void Shader::Init(const wstring& vs, const wstring& ps)
 {
 	_graphicsPiplineStateDesc = {};
 
-	CreateVertexShader(L"../Resources/Shaders/default.hlsl", "VS_Main", "vs_5_0");
-	CreatePixelShader(L"../Resources/Shaders/default.hlsl", "PS_Main", "ps_5_0");
+	CreateVertexShader(vs.c_str(), "VS_Main", "vs_5_0");
+	CreatePixelShader(ps.c_str(), "PS_Main", "ps_5_0");
 
 	D3D12_INPUT_ELEMENT_DESC desc[] =
 	{

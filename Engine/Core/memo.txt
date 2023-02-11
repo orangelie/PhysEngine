@@ -2,6 +2,8 @@
 FramBuffering.cpp 79: rscCommandList Close 텍스쳐때문에 막아버림
 FramBuffering.cpp 100: descriptor_count는 현재 레벨에서 오브젝트의 최대 스폰수에 영향을 받을 가능성이 높음.
 Engine.cpp 24: SetCapture
+Material.h 15: CBV_REGISTER_COUNT에 의존성
+Material.cpp 12: CBV_REGISTER_COUNT에 의존성
 # end Issue Check #
 
 

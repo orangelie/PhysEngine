@@ -1,1 +1,13 @@
-﻿  Client.vcxproj -> C:\Users\parksangwo\Desktop\Github\PhysEngine\Engine\Output\Client.exe
+﻿DirectXTexd.lib(DirectXTexImage.obj) : warning LNK4099: '' PDB를 'DirectXTexd.lib(DirectXTexImage.obj)' 또는 ''에서 찾을 수 없습니다. 디버그 정보가 없는 것처럼 개체를 링크합니다.
+DirectXTexd.lib(DirectXTexDDS.obj) : warning LNK4099: '' PDB를 'DirectXTexd.lib(DirectXTexDDS.obj)' 또는 ''에서 찾을 수 없습니다. 디버그 정보가 없는 것처럼 개체를 링크합니다.
+DirectXTexd.lib(DirectXTexTGA.obj) : warning LNK4099: '' PDB를 'DirectXTexd.lib(DirectXTexTGA.obj)' 또는 ''에서 찾을 수 없습니다. 디버그 정보가 없는 것처럼 개체를 링크합니다.
+DirectXTexd.lib(DirectXTexWIC.obj) : warning LNK4099: '' PDB를 'DirectXTexd.lib(DirectXTexWIC.obj)' 또는 ''에서 찾을 수 없습니다. 디버그 정보가 없는 것처럼 개체를 링크합니다.
+DirectXTexd.lib(DirectXTexD3D12.obj) : warning LNK4099: '' PDB를 'DirectXTexd.lib(DirectXTexD3D12.obj)' 또는 ''에서 찾을 수 없습니다. 디버그 정보가 없는 것처럼 개체를 링크합니다.
+DirectXTexd.lib(DirectXTexUtil.obj) : warning LNK4099: '' PDB를 'DirectXTexd.lib(DirectXTexUtil.obj)' 또는 ''에서 찾을 수 없습니다. 디버그 정보가 없는 것처럼 개체를 링크합니다.
+DirectXTexd.lib(DirectXTexConvert.obj) : warning LNK4099: '' PDB를 'DirectXTexd.lib(DirectXTexConvert.obj)' 또는 ''에서 찾을 수 없습니다. 디버그 정보가 없는 것처럼 개체를 링크합니다.
+DirectXTexd.lib(DirectXTexCompress.obj) : warning LNK4099: '' PDB를 'DirectXTexd.lib(DirectXTexCompress.obj)' 또는 ''에서 찾을 수 없습니다. 디버그 정보가 없는 것처럼 개체를 링크합니다.
+DirectXTexd.lib(DirectXTexMipmaps.obj) : warning LNK4099: '' PDB를 'DirectXTexd.lib(DirectXTexMipmaps.obj)' 또는 ''에서 찾을 수 없습니다. 디버그 정보가 없는 것처럼 개체를 링크합니다.
+DirectXTexd.lib(BC.obj) : warning LNK4099: '' PDB를 'DirectXTexd.lib(BC.obj)' 또는 ''에서 찾을 수 없습니다. 디버그 정보가 없는 것처럼 개체를 링크합니다.
+DirectXTexd.lib(BC4BC5.obj) : warning LNK4099: '' PDB를 'DirectXTexd.lib(BC4BC5.obj)' 또는 ''에서 찾을 수 없습니다. 디버그 정보가 없는 것처럼 개체를 링크합니다.
+DirectXTexd.lib(BC6HBC7.obj) : warning LNK4099: '' PDB를 'DirectXTexd.lib(BC6HBC7.obj)' 또는 ''에서 찾을 수 없습니다. 디버그 정보가 없는 것처럼 개체를 링크합니다.
+  Client.vcxproj -> C:\Users\Sang Wo Park\Desktop\Github\PhysEngine\Engine\Output\Client.exe

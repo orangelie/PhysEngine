@@ -1,5 +1,8 @@
 #pragma once
 
+#pragma comment(lib, "d2d1")
+#pragma comment(lib, "dwrite")
+#pragma comment(lib, "gdiplus")
 #pragma comment(lib, "dinput8")
 #pragma comment(lib, "d3d12")
 #pragma comment(lib, "dxgi")
@@ -16,6 +19,9 @@
 #include <wrl.h>
 #include <Xinput.h>
 #include <dinput.h>
+#include <gdiplus.h>
+#include <d2d1.h>
+#include <dwrite.h>
 
 #include <d3d12.h>
 #include <dxgi1_6.h>
@@ -32,6 +38,7 @@
 
 #include "SimpleMath.h"
 #include "SimpleMath.inl"
+#include "resource.h"
 
 #include <iostream>
 #include <string>
@@ -150,3 +157,4 @@ enum
 extern unique_ptr<class Engine> GEngine;
 
 void EnableConsole();
+wstring Resources(const wchar_t* path);

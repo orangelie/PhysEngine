@@ -181,11 +181,12 @@
     <ClInclude Include="DescriptorTable.h" />
     <ClInclude Include="Device.h" />
     <ClInclude Include="Engine.h" />
-    <ClInclude Include="FontResource.h" />
+    <ClInclude Include="FontGenerator.h" />
     <ClInclude Include="FrameBuffering.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="GameTimer.h" />
     <ClInclude Include="Input.h" />
+    <ClInclude Include="LegacyFontManager.h" />
     <ClInclude Include="Lighting.h" />
     <ClInclude Include="Material.h" />
     <ClInclude Include="Mesh.h" />
@@ -193,6 +194,7 @@
     <ClInclude Include="pch.h" />
     <ClInclude Include="PerlinNoise.h" />
     <ClInclude Include="PerlinNoiseResource.h" />
+    <ClInclude Include="resource.h" />
     <ClInclude Include="RootSignature.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="SceneManager.h" />
@@ -214,11 +216,12 @@
     <ClCompile Include="DescriptorTable.cpp" />
     <ClCompile Include="Device.cpp" />
     <ClCompile Include="Engine.cpp" />
-    <ClCompile Include="FontResource.cpp" />
+    <ClCompile Include="FontGenerator.cpp" />
     <ClCompile Include="FrameBuffering.cpp" />
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="GameTimer.cpp" />
     <ClCompile Include="Input.cpp" />
+    <ClCompile Include="LegacyFontManager.cpp" />
     <ClCompile Include="Lighting.cpp" />
     <ClCompile Include="Material.cpp" />
     <ClCompile Include="Mesh.cpp" />
@@ -260,6 +263,10 @@
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Effect</ShaderType>
       <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Release|x64'">5.0</ShaderModel>
     </FxCompile>
+    <FxCompile Include="..\Resources\Shaders\font.hlsl">
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Effect</ShaderType>
+      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">5.0</ShaderModel>
+    </FxCompile>
     <FxCompile Include="..\Resources\Shaders\lighting.hlsl">
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Effect</ShaderType>
       <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">5.0</ShaderModel>
@@ -280,6 +287,12 @@
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Effect</ShaderType>
       <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Release|x64'">5.0</ShaderModel>
     </FxCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Core.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="bitmap1.bmp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

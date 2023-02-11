@@ -36,6 +36,9 @@
     <Filter Include="Graphics\Font">
       <UniqueIdentifier>{0ec2c58e-5eca-44ba-976a-2b95b675750d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="리소스">
+      <UniqueIdentifier>{f8da52b9-3860-4acd-b318-1ca7213508b8}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h">
@@ -134,7 +137,13 @@
     <ClInclude Include="Lighting.h">
       <Filter>Graphics</Filter>
     </ClInclude>
-    <ClInclude Include="FontResource.h">
+    <ClInclude Include="FontGenerator.h">
+      <Filter>Graphics\Font</Filter>
+    </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="LegacyFontManager.h">
       <Filter>Graphics\Font</Filter>
     </ClInclude>
   </ItemGroup>
@@ -226,7 +235,10 @@
     <ClCompile Include="Lighting.cpp">
       <Filter>Graphics</Filter>
     </ClCompile>
-    <ClCompile Include="FontResource.cpp">
+    <ClCompile Include="FontGenerator.cpp">
+      <Filter>Graphics\Font</Filter>
+    </ClCompile>
+    <ClCompile Include="LegacyFontManager.cpp">
       <Filter>Graphics\Font</Filter>
     </ClCompile>
   </ItemGroup>
@@ -253,5 +265,18 @@
     <FxCompile Include="..\Resources\Shaders\lighting.hlsl">
       <Filter>Graphics\Shaders</Filter>
     </FxCompile>
+    <FxCompile Include="..\Resources\Shaders\font.hlsl">
+      <Filter>Graphics\Shaders</Filter>
+    </FxCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Core.rc">
+      <Filter>Core</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="bitmap1.bmp">
+      <Filter>리소스</Filter>
+    </Image>
   </ItemGroup>
 </Project>

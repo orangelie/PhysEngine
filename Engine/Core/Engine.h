@@ -7,6 +7,8 @@
 #include "RootSignature.h"
 #include "Texture.h"
 #include "GameTimer.h"
+#include "FontGenerator.h"
+#include "LegacyFontManager.h"
 
 static UINT32 GInitialScreenWidth = 1080;
 static UINT32 GInitialScreenHeight = 920;
@@ -33,6 +35,7 @@ public:
 	shared_ptr<RootSignature> GetRootSignature() const { return _rootSignature; }
 	shared_ptr<GameTimer> GetGameTimer() const { return _gameTimer; }
 
+	CD3DX12_CPU_DESCRIPTOR_HANDLE GetFontSrvHandle() const { return _legacyFontManager->SrvHandle(L"아리가또고자르"); }
 	shared_ptr<Texture> GetTextureDiffuse() const { return _texture; }
 	shared_ptr<Texture> GetTextureNormal() const { return _textureNormal; }
 	shared_ptr<Texture> GetTextureRough() const { return _textureRough; }
@@ -51,6 +54,7 @@ private:
 	shared_ptr<SwapChain> _swapChain = make_shared<SwapChain>();
 	shared_ptr<RootSignature> _rootSignature = make_shared<RootSignature>();
 
+	shared_ptr<LegacyFontManager> _legacyFontManager = nullptr;
 	shared_ptr<Texture> _texture = make_shared<Texture>();
 	shared_ptr<Texture> _textureNormal = make_shared<Texture>();
 	shared_ptr<Texture> _textureRough = make_shared<Texture>();

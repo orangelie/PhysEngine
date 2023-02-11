@@ -1,6 +1,7 @@
 #include "pch.h"
 #include "Engine.h"
 #include "Input.h"
+#include "SceneManager.h"
 
 void Engine::OnMouseMove(UINT x, UINT y)
 {
@@ -29,6 +30,10 @@ void Engine::Init(HINSTANCE hInstace)
 
 	_rootSignature->Init();
 	_frameBuffering->Init();
+
+	_legacyFontManager = make_shared<LegacyFontManager>(_win32Core->GetHwnd());
+	_legacyFontManager->Append(L"test");
+	_legacyFontManager->Append(L"아리가또고자르");
 	_texture->Init(L"../Resources/Textures/rock_diffuse.png");
 	_textureNormal->Init(L"../Resources/Textures/rock_normal.png");
 	_textureRough->Init(L"../Resources/Textures/rock_rough.png");
@@ -37,6 +42,8 @@ void Engine::Init(HINSTANCE hInstace)
 
 	_gameTimer->Reset();
 	Input::GetInstance()->Init();
+
+	SceneManager::GetInstance()->Init();
 }
 
 void Engine::Render()

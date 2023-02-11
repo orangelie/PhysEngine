@@ -15,7 +15,7 @@ void StaticPrefab::Init()
 	shared_ptr<GameObject> boxObject1 = make_shared<GameObject>();
 	{
 		TransformPass pass = {};
-		pass.World = XMMatrixTranslation(0.0f, -0.5f, -3.0f);
+		pass.World = XMMatrixScaling(10.0f, 3.0f, 3.0f) * XMMatrixTranslation(0.0f, 5.0f, -3.0f);
 
 		boxObject1->SetMaterial(mat.GetMaterialFromString("BoxDefault"));
 		boxObject1->SetTransformPass(pass);

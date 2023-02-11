@@ -119,8 +119,6 @@ void FrameBuffering::Init()
 
 	_depthStencilBuffer->Init(_width, _height);
 	_perlinNoiseResource->Init(_width, _height);
-
-	SceneManager::GetInstance()->Init();
 }
 
 void FrameBuffering::FlushResourceCmdList()

@@ -32,3 +32,11 @@ void EnableConsole()
 	std::wcerr.clear();
 	std::wcin.clear();
 }
+
+wstring Resources(const wchar_t* path)
+{
+	wstring result = L"../Resources/";
+	result += path;
+
+	return result;
+}
